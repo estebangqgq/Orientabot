@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>OrientaBot IA</title>
+    <link rel="stylesheet" href="css/chatbot.css">
+</head>
+<body>
+
+<div class="chat-container">
+
+    <aside class="sidebar">
+
+        <div class="logo">
+            🤖 OrientaBot
+        </div>
+
+        <div class="info">
+
+            <h3>Asistente Inteligente</h3>
+
+            <p>
+                OrientaBot utiliza Inteligencia Artificial para ayudarte en:
+            </p>
+
+            <ul>
+                <li>🎓 Orientación vocacional</li>
+                <li>📚 Educación</li>
+                <li>💻 Tecnología</li>
+                <li>🧠 Cultura general</li>
+                <li>🚀 Emprendimiento</li>
+            </ul>
+
+        </div>
+
+        <a href="index.html" class="back-btn">
+            ← Volver al inicio
+        </a>
+
+    </aside>
+
+    <main class="main-chat">
+
+        <div class="header">
+            🤖 Conversando con OrientaBot
+        </div>
+        <div class="test-banner">
+
+    
+
+</div>
+
+        <div id="chatBox" class="chat-box">
+
+            <div class="bot-message">
+                ¡Hola! Soy OrientaBot. ¿Cómo puedo ayudarte hoy?
+            </div>
+
+        </div>
+
+        <div class="input-area">
+
+            <input
+                type="text"
+                id="userInput"
+                placeholder="Escribe tu pregunta..."
+            >
+
+            <button onclick="enviarMensaje()">
+                ➤
+            </button>
+
+        </div>
+
+    </main>
+
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+<script src="js/chatbot.js"></script>
+
+</body>
+</html>
