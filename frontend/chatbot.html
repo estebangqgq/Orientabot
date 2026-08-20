@@ -1,74 +1,282 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
+
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
     <title>OrientaBot IA</title>
+
     <link rel="stylesheet" href="css/chatbot.css">
+
 </head>
+
 <body>
 
 <div class="chat-container">
 
-    <aside class="sidebar">
+    <!-- =========================
+         BOTÓN MENÚ CELULAR
+    ========================== -->
 
-        <div class="logo">
-            🤖 OrientaBot
-        </div>
+    <button
+        id="mobileMenuBtn"
+        class="mobile-menu-btn"
+        type="button"
+        aria-label="Abrir menú"
+    >
+        ☰
+    </button>
 
-        <div class="info">
 
-            <h3>Asistente Inteligente</h3>
+    <!-- =========================
+         FONDO DEL MENÚ CELULAR
+    ========================== -->
 
-            <p>
-                OrientaBot utiliza Inteligencia Artificial para ayudarte en:
+    <div
+        id="sidebarOverlay"
+        class="sidebar-overlay"
+    ></div>
+
+
+    <!-- =========================
+         SIDEBAR
+    ========================== -->
+
+    <aside
+        id="sidebar"
+        class="sidebar"
+    >
+
+        <div>
+
+            <div class="sidebar-top">
+
+                <div class="bot-logo">
+                    🤖
+                </div>
+
+                <button
+                    id="closeSidebarBtn"
+                    class="close-sidebar-btn"
+                    type="button"
+                    aria-label="Cerrar menú"
+                >
+                    ✕
+                </button>
+
+            </div>
+
+
+            <h1>
+                Orienta<span>Bot</span>
+            </h1>
+
+            <p class="sidebar-description">
+                Tu asistente inteligente para elegir tu futuro.
             </p>
 
-            <ul>
-                <li>🎓 Orientación vocacional</li>
-                <li>📚 Educación</li>
-                <li>💻 Tecnología</li>
-                <li>🧠 Cultura general</li>
-                <li>🚀 Emprendimiento</li>
-            </ul>
+
+            <!-- MENÚ -->
+
+            <nav class="menu">
+
+                <a
+                    class="active"
+                    href="chatbot.html"
+                >
+                    💬
+                    <span>Chat inteligente</span>
+                </a>
+
+
+                <a href="test.html">
+                    🎓
+                    <span>Test vocacional</span>
+                </a>
+
+
+                <a href="index.html">
+                    🏠
+                    <span>Página principal</span>
+                </a>
+
+
+                <button
+                    id="clearChatButton"
+                    class="clear-chat-button"
+                    type="button"
+                >
+                    🗑️
+                    <span>Borrar conversación</span>
+                </button>
+
+            </nav>
 
         </div>
 
-        <a href="index.html" class="back-btn">
-            ← Volver al inicio
-        </a>
+
+        <!-- CONSEJO -->
+
+        <div class="tip">
+
+            <strong>
+                💡 Analiza imágenes
+            </strong>
+
+            <p>
+                Puedes subir una foto, captura,
+                gráfico o ejercicio y hacerle
+                una pregunta a OrientaBot.
+            </p>
+
+        </div>
 
     </aside>
 
+
+    <!-- =========================
+         ÁREA PRINCIPAL
+    ========================== -->
+
     <main class="main-chat">
 
-        <div class="header">
-            🤖 Conversando con OrientaBot
-        </div>
-        <div class="test-banner">
 
-    
+        <!-- HEADER -->
 
-</div>
+        <header class="chat-header">
 
-        <div id="chatBox" class="chat-box">
+            <div class="chat-header-text">
 
-            <div class="bot-message">
-                ¡Hola! Soy OrientaBot. ¿Cómo puedo ayudarte hoy?
+                <h2>
+                    Chat con
+                    <span>OrientaBot</span>
+                </h2>
+
+                <p>
+                    Pregunta, aprende o adjunta una
+                    imagen para analizarla.
+                </p>
+
             </div>
 
-        </div>
+
+            <button
+                id="darkModeBtn"
+                class="theme-button"
+                type="button"
+                aria-label="Cambiar modo oscuro"
+            >
+                🌙
+            </button>
+
+        </header>
+
+
+        <!-- =========================
+             CHAT
+        ========================== -->
+
+        <section
+            id="chatBox"
+            class="chat-box"
+        >
+
+            <div class="message-row bot-row">
+
+                <div class="avatar">
+                    🤖
+                </div>
+
+                <div class="bot-message">
+
+                    <strong>
+                        OrientaBot
+                    </strong>
+
+                    <p>
+                        ¡Hola! Puedes escribirme una
+                        pregunta o adjuntar una imagen
+                        para que la analice.
+                    </p>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- =========================
+             PREVIEW IMAGEN
+        ========================== -->
+
+        <section
+            id="imagePreviewContainer"
+            class="image-preview-container"
+        >
+
+            <img
+                id="imagePreview"
+                alt="Vista previa de la imagen"
+            >
+
+            <div class="preview-info">
+
+                <span id="imageName">
+                    Imagen seleccionada
+                </span>
+
+                <button
+                    id="removeImageBtn"
+                    type="button"
+                    title="Eliminar imagen"
+                >
+                    ✕
+                </button>
+
+            </div>
+
+        </section>
+
+
+        <!-- =========================
+             INPUT
+        ========================== -->
 
         <div class="input-area">
 
+            <label
+                class="attach-button"
+                for="imageInput"
+                title="Adjuntar imagen"
+            >
+                📎
+            </label>
+
+
             <input
-                type="text"
-                id="userInput"
-                placeholder="Escribe tu pregunta..."
+                id="imageInput"
+                type="file"
+                accept="image/png,image/jpeg,image/webp"
+                hidden
             >
 
-            <button onclick="enviarMensaje()">
+
+            <textarea
+                id="userInput"
+                rows="1"
+                placeholder="Escribe tu mensaje o pregunta sobre la imagen..."
+            ></textarea>
+
+
+            <button
+                id="sendButton"
+                type="button"
+            >
                 ➤
+                <span>Enviar</span>
             </button>
 
         </div>
@@ -77,8 +285,97 @@
 
 </div>
 
+
+<!-- =========================
+     MODAL BORRAR CHAT
+========================= -->
+
+<div
+    id="deleteModal"
+    class="modal-overlay"
+>
+
+    <div
+        class="delete-modal"
+        role="dialog"
+        aria-modal="true"
+    >
+
+        <div class="delete-icon">
+            🗑️
+        </div>
+
+        <h2>
+            ¿Borrar conversación?
+        </h2>
+
+        <p>
+            Se eliminará todo el historial
+            guardado de esta conversación.
+        </p>
+
+        <div class="modal-buttons">
+
+            <button
+                id="cancelDeleteBtn"
+                class="cancel-delete"
+                type="button"
+            >
+                Cancelar
+            </button>
+
+            <button
+                id="confirmDeleteBtn"
+                class="confirm-delete"
+                type="button"
+            >
+                Sí, borrar
+            </button>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+<!-- MARKED -->
+
 <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+
+
+<!-- MATHJAX -->
+
+<script>
+
+window.MathJax = {
+
+    tex: {
+
+        inlineMath: [
+            ['$', '$'],
+            ['\\(', '\\)']
+        ],
+
+        displayMath: [
+            ['$$', '$$'],
+            ['\\[', '\\]']
+        ]
+
+    }
+
+};
+
+</script>
+
+
+<script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+
+
+<!-- JAVASCRIPT -->
+
 <script src="js/chatbot.js"></script>
 
 </body>
+
 </html>

@@ -1,41 +1,512 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Test Vocacional - OrientaBot</title>
-<link rel="stylesheet" href="css/test.css">
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>Test Vocacional - OrientaBot</title>
+
+    <link
+        rel="stylesheet"
+        href="css/test.css"
+    >
 </head>
+
 <body>
 
-<div class="container">
+    <div class="test-layout">
 
-    <div class="header">
-        <h1>🎓 Test Vocacional OrientaBot</h1>
-        <p>Descubre las carreras más compatibles contigo</p>
-    </div>
+        <!-- =========================================
+             BOTÓN MENÚ PARA CELULAR
+        ========================================== -->
 
-    <div class="progress-container">
-        <div id="progress" class="progress"></div>
-    </div>
+       <button
+    id="menuToggle"
+    class="menu-toggle"
+    type="button"
+    aria-label="Abrir menú"
+    aria-expanded="false"
+    onclick="abrirMenu()"
+>
+    ☰
+</button>
 
-    <div id="questionBox" class="question-box"></div>
 
-    <div class="buttons">
-        <button id="btn1" onclick="responder(3)">Mucho</button>
-        <button id="btn2" onclick="responder(2)">Regular</button>
-        <button id="btn3" onclick="responder(1)">Poco</button>
-    </div>
+        <!-- =========================================
+             FONDO OSCURO
+        ========================================== -->
 
-    <div id="resultado" class="resultado"></div>
+        <div
+            id="menuOverlay"
+            class="menu-overlay"
+        ></div>
 
-    <a id="btnChatbot" href="#" class="volver">
-    🤖 Consultar a OrientaBot
-</a>
 
+        <!-- =========================================
+             SIDEBAR
+        ========================================== -->
+
+        <aside
+            id="testSidebar"
+            class="test-sidebar"
+        >
+
+            <!-- Botón cerrar -->
+
+            <button
+                id="menuClose"
+                class="menu-close"
+                type="button"
+                aria-label="Cerrar menú"
+            >
+                ×
+            </button>
+
+
+            <div class="sidebar-content">
+                <div class="theme-control">
+    <button
+        id="themeToggle"
+        class="theme-toggle"
+        type="button"
+        aria-label="Cambiar modo oscuro"
+    >
+        🌙 <span>Modo oscuro</span>
+    </button>
 </div>
 
-<script src="js/test.js"></script>
+                <div class="logo">
+                    🤖 OrientaBot
+                </div>
+
+
+                <h2>
+                    Test Vocacional
+                </h2>
+
+
+                <p>
+                    Responde con sinceridad para descubrir
+                    las áreas profesionales más compatibles
+                    contigo.
+                </p>
+
+
+                <div class="steps">
+
+                    <div>
+                        ✅ 30 preguntas
+                    </div>
+
+                    <div>
+                        📊 Resultados con porcentajes
+                    </div>
+
+                    <div>
+                        🎯 Top 5 áreas profesionales
+                    </div>
+
+                    <div>
+                        🤖 Consulta con IA
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- =====================================
+                 VOLVER AL INICIO
+            ====================================== -->
+
+            <a
+                href="index.html"
+                class="side-link"
+            >
+                ← Volver al inicio
+            </a>
+
+        </aside>
+
+
+        <!-- =========================================
+             CONTENIDO PRINCIPAL
+        ========================================== -->
+
+        <main class="test-main">
+
+            <div class="test-card">
+
+
+                <!-- =================================
+                     INFORMACIÓN SUPERIOR
+                ================================== -->
+
+                <div class="top-info">
+
+                    <div class="top-text">
+
+                        <span class="badge">
+                            Orientación Inteligente
+                        </span>
+
+
+                        <h1>
+                            🎓 Descubre tu carrera ideal
+                        </h1>
+
+
+                        <p>
+                            OrientaBot analizará tus respuestas
+                            y te mostrará las carreras más
+                            recomendadas para ti.
+                        </p>
+
+                    </div>
+
+
+                    <div class="question-counter">
+
+                        <span id="contador">
+                            1/30
+                        </span>
+
+                    </div>
+
+                </div>
+
+
+                <!-- =================================
+                     BARRA DE PROGRESO
+                ================================== -->
+
+                <div class="progress-container">
+
+                    <div
+                        id="progress"
+                        class="progress"
+                    ></div>
+
+                </div>
+
+
+                <!-- =================================
+                     PREGUNTA
+                ================================== -->
+
+                <div
+                    id="questionBox"
+                    class="question-box"
+                >
+                    Cargando pregunta...
+                </div>
+
+
+                <!-- =================================
+                     RESPUESTAS
+                ================================== -->
+
+                <div class="buttons">
+
+                    <button
+                        type="button"
+                        onclick="responder(3)"
+                    >
+                        😍 Mucho
+                    </button>
+
+
+                    <button
+                        type="button"
+                        onclick="responder(2)"
+                    >
+                        🙂 Regular
+                    </button>
+
+
+                    <button
+                        type="button"
+                        onclick="responder(1)"
+                    >
+                        😐 Poco
+                    </button>
+
+                </div>
+
+
+                <!-- =================================
+                     RESULTADOS
+                ================================== -->
+
+                <div
+                    id="resultado"
+                    class="resultado"
+                ></div>
+
+
+                <!-- =================================
+                     ACCIONES FINALES
+                ================================== -->
+
+                <div class="result-actions">
+
+                    <a
+                        id="btnChatbot"
+                        href="#"
+                        class="volver"
+                    >
+                        🤖 Consultar resultado con OrientaBot
+                    </a>
+
+
+                    <a
+                        href="test.html"
+                        class="reiniciar"
+                    >
+                        🔄 Repetir test
+                    </a>
+
+                </div>
+
+            </div>
+
+        </main>
+
+    </div>
+
+
+    <!-- =========================================
+         TEST VOCACIONAL
+    ========================================== -->
+
+    <script src="js/test.js"></script>
+
+
+    <!-- =========================================
+         MENÚ MÓVIL
+    ========================================== -->
+
+    <script>
+
+    function abrirMenu() {
+
+        const sidebar =
+            document.getElementById("testSidebar");
+
+        const overlay =
+            document.getElementById("menuOverlay");
+
+        const boton =
+            document.getElementById("menuToggle");
+
+
+        if (!sidebar || !overlay) {
+            return;
+        }
+
+
+        sidebar.classList.add("menu-open");
+
+        overlay.classList.add("visible");
+
+        document.body.classList.add("menu-active");
+
+
+        if (boton) {
+            boton.setAttribute(
+                "aria-expanded",
+                "true"
+            );
+        }
+
+    }
+
+
+    function cerrarMenu() {
+
+        const sidebar =
+            document.getElementById("testSidebar");
+
+        const overlay =
+            document.getElementById("menuOverlay");
+
+        const boton =
+            document.getElementById("menuToggle");
+
+
+        if (sidebar) {
+            sidebar.classList.remove("menu-open");
+        }
+
+
+        if (overlay) {
+            overlay.classList.remove("visible");
+        }
+
+
+        document.body.classList.remove(
+            "menu-active"
+        );
+
+
+        if (boton) {
+
+            boton.setAttribute(
+                "aria-expanded",
+                "false"
+            );
+
+        }
+
+    }
+
+
+    document.addEventListener(
+        "DOMContentLoaded",
+        function () {
+
+            const cerrar =
+                document.getElementById("menuClose");
+
+            const overlay =
+                document.getElementById("menuOverlay");
+
+
+            if (cerrar) {
+
+                cerrar.onclick =
+                    cerrarMenu;
+
+            }
+
+
+            if (overlay) {
+
+                overlay.onclick =
+                    cerrarMenu;
+
+            }
+
+
+            document
+                .querySelectorAll(".test-sidebar a")
+                .forEach(function (enlace) {
+
+                    enlace.addEventListener(
+                        "click",
+                        cerrarMenu
+                    );
+
+                });
+
+        }
+    );
+
+
+    document.addEventListener(
+        "keydown",
+        function (event) {
+
+            if (event.key === "Escape") {
+
+                cerrarMenu();
+
+            }
+
+        }
+    );
+
+
+    window.addEventListener(
+        "resize",
+        function () {
+
+            if (window.innerWidth > 760) {
+
+                cerrarMenu();
+
+            }
+
+        }
+    );
+    /* =========================================================
+   MODO OSCURO
+========================================================= */
+
+const themeToggle =
+    document.getElementById("themeToggle");
+
+
+function aplicarTema() {
+
+    const tema =
+        localStorage.getItem("orientabot-theme");
+
+
+    if (tema === "dark") {
+
+        document.body.classList.add("dark-mode");
+
+        if (themeToggle) {
+
+            themeToggle.innerHTML =
+                "☀️ <span>Modo claro</span>";
+
+        }
+
+    } else {
+
+        document.body.classList.remove("dark-mode");
+
+        if (themeToggle) {
+
+            themeToggle.innerHTML =
+                "🌙 <span>Modo oscuro</span>";
+
+        }
+
+    }
+
+}
+
+
+if (themeToggle) {
+
+    themeToggle.addEventListener(
+        "click",
+        function () {
+
+            const oscuro =
+                document.body.classList.toggle(
+                    "dark-mode"
+                );
+
+
+            localStorage.setItem(
+                "orientabot-theme",
+                oscuro ? "dark" : "light"
+            );
+
+
+            aplicarTema();
+
+        }
+    );
+
+}
+
+
+/* Aplicar tema guardado al cargar */
+
+aplicarTema();
+
+</script>
 
 </body>
+
 </html>
