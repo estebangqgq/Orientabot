@@ -827,8 +827,9 @@ async function enviarMensaje(
 
         const respuesta =
             await fetch(
-                "http://localhost:3000/chat",
-                {
+    "https://orientabot-1-5aox.onrender.com/chat",
+    {
+
 
                     method:"POST",
 
